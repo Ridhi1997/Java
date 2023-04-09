@@ -1,0 +1,45 @@
+package com.java.program.Array;
+
+import java.util.Arrays;
+
+public class InsertElementinArray {
+	public static void main(String[] args) {
+	     int array[] = { 2, 5, -2, 6, -3, 8, 0, -7, -9, 4 };
+	     Arrays.sort(array);
+	     
+	     System.out.println("Sorted Array");
+	     printArray(array);
+	     
+	     System.out.println();
+	     
+	     int index =Arrays.binarySearch(array, 1);
+	     System.out.println("Didn't find 1 @ "+index);
+	     System.out.println();
+	     
+	     System.out.println("With 1 added");
+	     int newIndex =- index-1;
+	     array = insertElement(array, 1, newIndex);
+	     printArray(array);
+		
+	}
+	public static void printArray(int array[]) {
+		for(int i=0; i<array.length;i++) {
+			if(i != 0) {
+				System.out.print(" ,");
+			}
+			System.out.print(array[i]+" ");
+		}
+		System.out.println();
+	}
+	public static int[] insertElement(int original[],int element, int index) {
+		int length = original.length;
+		int destination[] = new int[length+1];
+		System.arraycopy(original, 0, destination, 0, index);
+		destination [index] = element;
+		System.arraycopy(original, index, destination, index+1, length-index);
+		return destination;
+		
+	}
+	
+
+}
